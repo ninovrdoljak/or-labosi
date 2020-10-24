@@ -1,4 +1,7 @@
 # or-labosi
 Repozitorij za laboratorijske vježbe iz otvorenog računarstva
-# Autor
+## Autor
 Nino Vrdoljak
+## Verzija skupa
+1.0
+
