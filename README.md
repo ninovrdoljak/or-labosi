@@ -26,7 +26,15 @@ https://en.wikipedia.org/wiki/List_of_Croatian_counties_by_GDP
 ## Frekvencija ažuriranja podataka
 Prije laboratorijskih vježbi i nakon u slučaju ispravljanja pogreški   
 ## Opis licence
-Korištena licenca je MIT License.
+Korištena licenca je MIT License.    
+Ona je jednostavna besplatna licenca s malo ograničenja, koji su "preservation of copyright and license notices".     
+S obzirom da stavlja malo ograničenja na dijeljenje, ima veliku kompatibilnost s drugim licencama.    
+Licenca dozvoljava:    
+Komercijalno korištenje    
+Dijeljenje     
+Modifikaciju     
+Privatno korištenje   
+Poveznica na više o licenci: https://en.wikipedia.org/wiki/MIT_License    
 ## Datum objave
 2020-10-27
 ## Format datuma
