@@ -1,0 +1,137 @@
+[
+  {
+    "naziv": "Virovitičko-podravska županija",
+    "sjediste": "Virovitica",
+    "stanovnistvo": 84836,
+    "brojgradova": 3,
+    "brojopcina": 13,
+    "brojnaselja": 188,
+    "povrsina": 2024,
+    "zupan": "Igor Andrović",
+    "wikipoveznica": "Virovitičko-podravska_županija",
+    "gdppercapita": 7641,
+    "nazivgrada": ["Slatina", "Virovitica","Orahovica"]
+  },
+  
+  {
+    "naziv": "Zagrebačka županija",
+    "sjediste": "Grad Zagreb",
+    "stanovnistvo": 317606,
+    "brojgradova": 9,
+    "brojopcina": 25,
+    "brojnaselja": 694,
+    "povrsina": 3060,
+    "zupan": "Stjepan Kožić",
+    "wikipoveznica": "Zagrebačka_županija",
+    "gdppercapita": 10358,
+    "nazivgrada": ["Ivanić Grad", "Samobor", "Velika Gorica", "Dugo Selo", "Jastrebarsko", "Sveta Nedelja", "Sveti Ivan Zelina", "Vrbovec", "Zaprešić"]
+  },
+ 
+  {
+    "naziv": "Karlovačka županija",
+    "sjediste": "Karlovac",
+    "stanovnistvo": 128899,
+    "brojgradova": 5,
+    "brojopcina": 17,
+    "brojnaselja": 649,
+    "povrsina": 3622,
+    "zupan": "Damir Jelić",
+    "wikipoveznica": "Karlovačka_županija",
+    "gdppercapita": 10158,
+    "nazivgrada": ["Karlovac", "Duga resa", "Ogulin", "Slunj", "Ozalj"]
+  },
+  
+  {
+    "naziv": "Koprivničko-križevačka županija",
+    "sjediste": "Koprivnica",
+    "stanovnistvo": 115584,
+    "brojgradova": 3,
+    "brojopcina": 22,
+    "brojnaselja": 264,
+    "povrsina": 1748,
+    "zupan": "Darko Koren",
+    "wikipoveznica": "Koprivničko-križevačka_županija",
+    "gdppercapita": 10583,
+    "nazivgrada": ["Đurđevac", "Koprivnica", "Križevci"]
+  },
+ 
+  {
+    "naziv": "Brodsko-posavska županija",
+    "sjediste": "Slavonski Brod",
+    "stanovnistvo": 158575,
+    "brojgradova": 2,
+    "brojopcina": 26,
+    "brojnaselja": 185,
+    "povrsina": 2030,
+    "zupan": "Danijel Marušić",
+    "wikipoveznica": "Brodsko-posavska_županija",
+    "gdppercapita": 7746,
+    "nazivgrada": ["Nova Gradiška", "Slavonski Brod"]
+  },
+  {
+    "naziv": "Međimurska županija",
+    "sjediste": "Čakovec",
+    "stanovnistvo": 113804,
+    "brojgradova": 3,
+    "brojopcina": 22,
+    "brojnaselja": 131,
+    "povrsina": 729,
+    "zupan": "Matija Posavec",
+    "wikipoveznica": "Međimurska_županija",
+    "gdppercapita": 10847,
+    "nazivgrada": ["Čakovec", "Prelog", "Mursko Središće"]
+  },
+  {
+    "naziv": "Dubrovačko-neretvanska županija",
+    "sjediste": "Dubrovnik",
+    "stanovnistvo": 122568,
+    "brojgradova": 5,
+    "brojopcina": 17,
+    "brojnaselja": 230,
+    "povrsina": 1781,
+    "zupan": "Nikola Dobroslavić",
+    "wikipoveznica": "Dubrovačko-neretvanska_županija",
+    "gdppercapita": 12415,
+    "nazivgrada": ["Dubrovnik", "Korčula", "Metković", "Opuzen", "Ploče"]
+  },
+  {
+    "naziv": "Vukovarsko-srijemska županija",
+    "sjediste": "Vukovar",
+    "stanovnistvo": 179521,
+    "brojgradova": 5,
+    "brojopcina": 26,
+    "brojnaselja": 85,
+    "povrsina": 2454,
+    "zupan": "Božo Galić",
+    "wikipoveznica": "Vukovarsko-srijemska_županija",
+    "gdppercapita": 8003,
+    "nazivgrada": ["Ilok", "Otok", "Vinkovci", "Županja", "Vukovar"]
+  },
+  {
+    "naziv": "Ličko-senjska županija",
+    "sjediste": "Gospić",
+    "stanovnistvo": 50927,
+    "brojgradova": 4,
+    "brojopcina": 8,
+    "brojnaselja": 255,
+    "povrsina": 5353,
+    "zupan": "Darko Milinović",
+    "wikipoveznica": "Ličko-senjska_županija",
+    "gdppercapita": 9831,
+    "nazivgrada": ["Gospić", "Novalja", "Otočac", "Senj"]
+  },
+  
+  {
+    "naziv": "Požeško-slavonska županija",
+    "sjediste": "Požega",
+    "stanovnistvo": 78034,
+    "brojgradova": 5,
+    "brojopcina": 5,
+    "brojnaselja": 277,
+    "povrsina": 1823,
+    "zupan": "Alojz Tomašević",
+    "wikipoveznica": "Požeško-slavonska_županija",
+    "gdppercapita": 7874,
+    "nazivgrada": ["Kutjevo", "Lipik", "Pakrac", "Požega", "Pleternica"]
+  }
+]
