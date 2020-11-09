@@ -17,7 +17,8 @@ povrsina : površina navedene županije navedena u kilometrima kvadratnim
 zupan : ime i prezime župana navedene županije   
 wikipoveznica : dio URL-a koji se nadodaje početnom za dolazak na web stranicu navedene županije : https://hr.wikipedia.org/wiki/   
 gdppercapita : BDP po stanovniku izražen u eurima za navedenu županiju (za godinu 2018.)   
-nazivgrada : ime gradova koji se nalaze u navedenoj županiji   
+nazivgrada : ime gradova koji se nalaze u navedenoj županiji
+stanovnistvoGrada : broj osoba koje žive u navedenom gradu
 ## Izvori
 WIkipedija stranice za svaku navedenu županiju (dolazak do njih naveden pod opisom atributa wikipoveznica)   
 npr. https://hr.wikipedia.org/wiki/Virovitičko-podravska_županija   
