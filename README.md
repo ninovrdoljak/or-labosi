@@ -37,7 +37,7 @@ Modifikaciju
 Privatno korištenje   
 Poveznica na više o licenci: https://en.wikipedia.org/wiki/MIT_License    
 ## Datum objave
-2020-10-27
+2020-11-10
 ## Format datuma
 ISO 8601
 
