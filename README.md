@@ -3,7 +3,7 @@ Repozitorij za laboratorijske vježbe iz otvorenog računarstva
 ## Autor
 Nino Vrdoljak
 ## Verzija skupa
-1.0
+2.0
 ## Jezik skupa
 hrvatski
 ## Opis atributa
