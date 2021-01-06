@@ -3,10 +3,11 @@ Repozitorij za laboratorijske vježbe iz otvorenog računarstva
 ## Autor
 Nino Vrdoljak
 ## Verzija skupa
-2.0
+3.0
 ## Jezik skupa
 hrvatski
 ## Opis atributa
+id : id županije
 naziv : ime županije   
 sjediste : grad koji je sjedište navedene županije   
 stanovnistvo : broj osoba koje žive u navedenoj županiji   
@@ -16,7 +17,8 @@ brojnaselja : broj naselja koji se nalaze u navedenog županiji
 povrsina : površina navedene županije navedena u kilometrima kvadratnim      
 zupan : ime i prezime župana navedene županije   
 wikipoveznica : dio URL-a koji se nadodaje početnom za dolazak na web stranicu navedene županije : https://hr.wikipedia.org/wiki/   
-gdppercapita : BDP po stanovniku izražen u eurima za navedenu županiju (za godinu 2018.)   
+gdppercapita : BDP po stanovniku izražen u eurima za navedenu županiju (za godinu 2018.)
+idGrada : id grada
 nazivgrada : ime gradova koji se nalaze u navedenoj županiji    
 stanovnistvoGrada : broj osoba koje žive u navedenom gradu    
 ## Izvori
@@ -37,7 +39,7 @@ Modifikaciju
 Privatno korištenje   
 Poveznica na više o licenci: https://en.wikipedia.org/wiki/MIT_License    
 ## Datum objave
-2020-11-10
+2021-01-06
 ## Format datuma
 ISO 8601
 
