@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hrvatske županije</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Sučelje hrvatskih županija">
+    <meta name="author" content="Nino Vrdoljak">
+</head>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+.menu {
+    background-color: grey;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 4;
+    display: grid;
+    grid-row-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: fit-content;
+    min-width: fit-content;
+    justify-items: center;
+    
+}
+
+th {
+    border: 1px solid black;
+    height: 60px;
+}
+
+table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;   
+}
+
+a:link, a:visited {
+    background-color: grey;
+    color: white;
+    padding: auto auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    height:fit-content;
+    width: fit-content;
+  }
+  
+a:hover, a:active {
+    background-color: #856f6f ;
+  }
+</style>
+
+<body style="background-color: goldenrod;">
+    <div style="text-align: center;">
+        <h1 >DATATABLE</h1>
+    </div>
+    <div class = "menu">
+        <div>
+            <a id ="jsonlink" href="hrvatske_zupanije.json">JSON format</a>
+        </div>
+        <div>
+            <a id ="csvlink" href="hrvatske_zupanije.csv">CSV format</a>
+        </div>
+        <div>
+            <a href="README.md">README file</a>
+        </div>
+        <div ></div>
+        <div>
+            <a href="index.html">POČETNA</a>
+        </div>
+        <div>
+           
+        </div>
+    </div>
+
+
+    
+
+   <div style="text-align: left;">
+    <form >
+        <label for="pretraga">Polje za pretragu:</label><br>
+        <input type="text" id="pretraga" name="pretraga" value="Unesite vrijednost"><br>
+
+        <label for="atribut">Atributi za pretragu:</label><br>
+            <select id="atribut" name="atribut">
+                <option value="all">Sva polja(wildcard)</option>
+                <option value="naziv">Naziv županije</option>
+                <option value="sjediste">Sjediste županije</option>
+                <option value="stanovnistvo">Stanovništvo županije</option>
+                <option value="brojgradova">Broj gradova županije</option>
+                <option value="brojopcina">Broj opcina županije</option>
+                <option value="brojnaselja">Broj naselja županije</option>
+                <option value="povrsina">Površina županije</option>
+                <option value="zupan">Župan županije</option>
+                <option value="wikipoveznica">Wiki poveznica</option>
+                <option value="gdppercapita">GDP per capita</option>
+            </select><br>
+        <input type="button" value="Pretraži" onclick="handleClick()">
+      </form> 
+   </div>
+   <br>
+   <br>
+   <br>
+
+   <main id = "glavni">
+    <table id="tablica">
+        <tr class = "redak">
+            <th class="prvi">NAZIV</th>
+            <th class="drugi">SJEDIŠTE</th> 
+            <th class="treci">STANOVNIŠTVO</th>
+            <th class="cetvrti">BROJ GRADOVA</th>
+            <th class="peti">BROJ OPĆINA</th> 
+            <th class="sesti">BROJ NASELJA</th>
+            <th class="sedmi">POVRŠINA</th>
+            <th class="osmi">ŽUPAN</th> 
+            <th class="deveti">WIKI LINK</th>
+            <th class="deseti">GDP PER CAPITA</th> 
+          </tr>
+    </table>
+    </main>
+
+   <template id="templateTablica">
+    <tr class = "redak">
+      <th class="prvi"></th>
+      <th class="drugi"></th> 
+      <th class="treci"></th>
+      <th class="cetvrti"></th>
+      <th class="peti"></th> 
+      <th class="sesti"></th>
+      <th class="sedmi"></th>
+      <th class="osmi"></th> 
+      <th class="deveti"></th>
+      <th class="deseti"></th> 
+      
+     
+    </tr>
+</template>
+</body>
+
+<script>
+
+
+async function getValue()
+        {
+            let e = document.getElementById("atribut");
+            let ATRIBUT = e.value;
+            let PRETRAGA = document.getElementById("pretraga").value;
+            
+            let poziv = "http://" + "localhost:8080/api/v0/zupanije/sve/"+ ATRIBUT + "/" + PRETRAGA + "";
+
+            var a1 = document.getElementById('jsonlink'); 
+            a1.href = "http://" + "localhost:8080/api/v0/zupanije/files/" + ATRIBUT + "/" + PRETRAGA + "/json";
+            var a2 = document.getElementById('csvlink'); 
+            a2.href = "http://" + "localhost:8080/api/v0/zupanije/files/" + ATRIBUT + "/" + PRETRAGA + "/csv";
+
+
+            
+            let response = await fetch(poziv);
+            
+            let data = await response.json();
+            //let data = JSON.parse(response);
+
+            var elmtTable = document.querySelector('#tablica');
+            var tableRows = elmtTable.getElementsByTagName('tr');
+            var rowCount = tableRows.length;
+
+            for (var x=rowCount-1; x>0; x--) {
+                elmtTable.removeChild(tableRows[x]);
+            }
+            
+            addData(data);
+        }
+  
+        async function handleClick(event)
+        { 
+          getValue();
+          event.preventDefault(); // disable normal form submit behavior
+          return false; // prevent further bubbling of event
+        }
+
+  
+
+    async function getData() {
+        let response = await fetch("http://localhost:8080/api/v0/zupanije/sve");
+        let data = await response.json();
+        addData(data);
+    }
+
+    async function addData(data) {
+            let main = document.querySelector('#tablica');
+            
+            let rowTemplate = document.querySelector('#templateTablica');
+
+            for (let index = 0; index < data.length; index++) {
+                let redakClone = rowTemplate.content.cloneNode(true);
+
+                let redakOmotac = redakClone.querySelector('.redak');
+
+                let prvi = redakClone.querySelector('.prvi');
+                prvi.textContent = data[index].naziv;
+
+                let drugi = redakClone.querySelector('.drugi');
+                drugi.textContent = data[index].sjediste;
+
+                let treci = redakClone.querySelector('.treci');
+                treci.textContent = data[index].stanovnistvo;
+
+                let cetvrti = redakClone.querySelector('.cetvrti');
+                cetvrti.textContent = data[index].brojgradova;
+
+                let peti = redakClone.querySelector('.peti');
+                peti.textContent = data[index].brojopcina;
+
+                let sesti = redakClone.querySelector('.sesti');
+                sesti.textContent = data[index].brojnaselja;
+
+                let sedmi = redakClone.querySelector('.sedmi');
+                sedmi.textContent = data[index].povrsina;
+
+                let osmi = redakClone.querySelector('.osmi');
+                osmi.textContent = data[index].zupan;
+
+                let deveti = redakClone.querySelector('.deveti');
+                deveti.textContent = data[index].wikipoveznica;
+
+                let deseti = redakClone.querySelector('.deseti');
+                deseti.textContent = data[index].gdppercapita;
+
+                main.appendChild(redakClone);
+            }
+    }
+
+    getData();
+    
+</script>
+
+</html>
