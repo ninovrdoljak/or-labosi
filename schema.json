@@ -1,0 +1,89 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "https://or.fer.unizg.hr/orfilmovi.json",
+	"type": "array",
+	"title": "Hrvatske županije",
+	"description": "Skup hrvatskih županija.",
+	"items": {
+		"type": "object",
+		"title": "Županija",
+		"description": "Objekt koji sadrži sve podatke o jednoj županiji.",
+		"required": [ "naziv", "sjediste", "stanovnistvo", "brojgradova", "brojopcina", "brojnaselja", "povrsina", "zupan", "wikipoveznica", "gdppercapita"],
+		"properties": {
+			"id": {
+				"type": "number",
+				"title": "ID županije",
+				"description": "ID jedne HR županije."
+			},
+			"naziv": {
+				"type": "string",
+				"title": "Naziv županije",
+				"description": "Naziv jedne HR županije."
+			},
+			"sjediste": {
+				"type": "string",
+				"title": "Sjedište županije",
+				"description": "Sjedište navedene HR županije."
+			},
+			"stanovnistvo": {
+				"type": "number",
+				"title": "Stanovništvo županije",
+				"description": "Broj osoba koje žive u navedenoj HR županiji.",
+				"exclusiveMinimum": 0
+			},
+			"brojgradova": {
+				"type": "number",
+				"title": "Broj gradova županije",
+				"description": "Broj gradova u navedenoj HR županiji."
+			},
+			"brojopcina": {
+				"type": "number",
+				"title": "Broj općina županije",
+				"description": "Broj opcina u navedenoj HR županiji."
+			},
+			"brojnaselja": {
+				"type": "number",
+				"title": "Broj naselja županije",
+				"description": "Broj naselja u navedenoj HR županiji."
+			},
+			"povrsina": {
+				"type": "number",
+				"title": "Površina županije",
+				"description": "Površina županije u kilometrima kvadratnim.",
+				"exclusiveMinimum": 0
+			},
+			"zupan": {
+				"type": "string",
+				"title": "Župan županije",
+				"description": "Ime župana navedene županije."
+			},
+			"wikipoveznica": {
+				"type": "string",
+				"title": "Wiki poveznica županije",
+				"description": "Poveznica na wikipedija stranicu navedene županije."
+			},
+			"gdppercapita": {
+				"type": "number",
+				"title": "GDP per capita županije",
+				"description": "GDP per capita navedene županije u eurima.",
+				"exclusiveMinimum": 0
+			},
+			"idGrada": {
+				"type": "number",
+				"title": "ID grada",
+				"description": "ID jednog HR grada."
+			}
+			"nazivgrada": {
+				"type": "string",
+				"title": "Grad županije",
+				"description": "Jedan grad koji se nalazi u navedenoj županiji."
+			},
+			"stanovnistvograd": {
+				"type": "number",
+				"title": "Stanovništvo grada",
+				"description": "Broj osoba koje žive u navedenom gradu.",
+				"exclusiveMinimum": 0
+			}
+		}
+	}
+}
