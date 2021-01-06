@@ -1,0 +1,627 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "description": "REST API pruža 10 hrvatskih županija, svaku indeksiranu po id-u generiranom u bazi, svaka ima nekoliko gradova koji se također mogu dohvaćati, isto indeksirani po id-u.",
+    "version": "1.0.0",
+    "title": "REST API Hrvatskih županija",
+    "contact": {
+      "name": "Nino Vrdoljak",
+      "url": "https://github.com/ninovrdoljak",
+      "email": "nv51631@fer.hr"
+    },
+    "license": {
+      "name": "MIT Licenca",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "http://localhost:8080",
+  "basePath": "/api/v1/zupanije",
+  "paths": {
+    "/": {
+      "post": {
+        "tags": [
+          "post"
+        ],
+        "summary": "Dodaj novu županiju",
+        "description": "Vraća dodanu županiju",
+        "requestBody": {
+          "description": "DTO koji ima podatke o zupaniji(osim id-ja)",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ZupanijaReqDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZupanijaDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    },
+    "/sve": {
+      "get": {
+        "tags": [
+          "sve"
+        ],
+        "summary": "Dobij sve županije",
+        "description": "Vraća sve županije",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ZupanijaDTO"
+                  }
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    },
+    "/sve/gradovi": {
+      "get": {
+        "tags": [
+          "sve"
+        ],
+        "summary": "Dobij sve gradove",
+        "description": "Vraća sve gradove",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GradDTO"
+                  }
+                }
+              }
+            }
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    },
+    "/id/{id}": {
+      "get": {
+        "tags": [
+          "id"
+        ],
+        "summary": "Dobij županiju po njezinom id-ju",
+        "description": "Vraća županiju s predanim id-jem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID županije",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZupanijaDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "put"
+        ],
+        "summary": "Ažuriraj županiju preko njezinog ID-ja",
+        "description": "Vraća ažuriranu županiju",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID županije",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "DTO koji ima podatke o zupaniji(osim id-ja)",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ZupanijaReqDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZupanijaDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "delete"
+        ],
+        "summary": "Briše županiju s predanim id-jem",
+        "description": "Vraća obrisanu županiju",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID županije",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZupanijaDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    },
+    "/id/{id}/gradovi": {
+      "get": {
+        "tags": [
+          "id"
+        ],
+        "summary": "Dobij gradove županije po njezinom id-ju",
+        "description": "Vraća gradove županije s predanim id-jem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID županije čije gradove gledamo",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GradDTO"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    },
+    "/id/{id}/{idGrada}": {
+      "get": {
+        "tags": [
+          "id"
+        ],
+        "summary": "Dobij grad županije po id-ju županije i grada",
+        "description": "Vraća grad županije s predanim id-jem županije i grada",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID županije čije gradove gledamo",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "path",
+            "name": "idGrada",
+            "description": "ID grada kojeg gledamo",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GradDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    },
+    "/id/{id}/sjediste": {
+      "get": {
+        "tags": [
+          "id"
+        ],
+        "summary": "Dobij sjediste županije po id-ju županije",
+        "description": "Vraća sjediste županije s predanim id-jem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID županije čije sjediste gledamo",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SjedisteDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    },
+    "/id/{id}/zupan": {
+      "get": {
+        "tags": [
+          "id"
+        ],
+        "summary": "Dobij župana županije po id-ju županije",
+        "description": "Vraća župana županije s predanim id-jem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID županije župana",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZupanDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    },
+    "/id/{id}/wiki": {
+      "get": {
+        "tags": [
+          "id"
+        ],
+        "summary": "Dobij wiki poveznicu županije po id-ju županije",
+        "description": "Vraća wiki poveznicu županije s predanim id-jem",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID županije čiju wiki poveznicu dobivamo",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WikiDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    },
+    "/naziv/{naziv}": {
+      "get": {
+        "tags": [
+          "po nazivu"
+        ],
+        "summary": "Dobij županiju po njezinom nazivu",
+        "description": "Vraća županiju s predanim nazivom",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "naziv",
+            "description": "Naziv županije",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ZupanijaDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ZupanijaReqDTO": {
+        "type": "object",
+        "properties": {
+          "naziv": {
+            "type": "string"
+          },
+          "sjediste": {
+            "type": "string"
+          },
+          "stanovnistvo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brojgradova": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brojopcina": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brojnaselja": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "povrsina": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "zupan": {
+            "type": "string"
+          },
+          "wikipoveznica": {
+            "type": "string"
+          },
+          "gdppercapita": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ZupanijaDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "naziv": {
+            "type": "string"
+          },
+          "sjediste": {
+            "type": "string"
+          },
+          "stanovnistvo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brojgradova": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brojopcina": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "brojnaselja": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "povrsina": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "zupan": {
+            "type": "string"
+          },
+          "wikipoveznica": {
+            "type": "string"
+          },
+          "gdppercapita": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "links": {
+            "type": "object"
+          }
+        }
+      },
+      "GradDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "nazivgrada": {
+            "type": "string"
+          },
+          "naziv": {
+            "type": "string"
+          },
+          "stanovnistvograd": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "links": {
+            "type": "object"
+          }
+        }
+      },
+      "ZupanDTO": {
+        "type": "object",
+        "properties": {
+          "zupan": {
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          }
+        }
+      },
+      "WikiDTO": {
+        "type": "object",
+        "properties": {
+          "wiki": {
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          }
+        }
+      },
+      "SjedisteDTO": {
+        "type": "object",
+        "properties": {
+          "sjediste": {
+            "type": "string"
+          },
+          "links": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
