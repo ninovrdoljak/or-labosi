@@ -1,9 +1,56 @@
 package hr.fer.or.lab3.RestAPI.dto;
 
+import ioinformarics.oss.jackson.module.jsonld.annotation.JsonldId;
+
 public class ZupanijaDTO {
+	
+	@JsonldId
 	private Long id;
+	
+	
 	private String naziv;
-    private String sjediste;
+	
+	
+	private String _context;
+	
+	
+    public String get_context() {
+		return _context;
+	}
+
+	public void set_context(String _context) {
+		this._context = _context;
+	}
+	
+	private String _type;
+	
+	private String slika;
+
+	public String getSlika() {
+		return slika;
+	}
+
+	public void setSlika(String slika) {
+		this.slika = slika;
+	}
+
+	public String get_type() {
+		return _type;
+	}
+
+	public void set_type(String _type) {
+		this._type = _type;
+	}
+
+	public void setSjediste(Object sjediste) {
+		this.sjediste = sjediste;
+	}
+
+	public void setZupan(Object zupan) {
+		this.zupan = zupan;
+	}
+
+	private Object sjediste;
     
     private int stanovnistvo;
     
@@ -15,32 +62,40 @@ public class ZupanijaDTO {
     
     private int povrsina;
     
-    private String zupan;
+    private Object zupan;
     
     private String wikipoveznica;
     
     private int gdppercapita;
     
     private Object links;
-
+    
+    
 	public ZupanijaDTO(Long id, String naziv, String sjediste, int stanovnistvo, int brojgradova, int brojopcina,
 			int brojnaselja, int povrsina, String zupan, String wikipoveznica, int gdppercapita, Object links) {
 		super();
 		this.id = id;
+		this._type = "State";
 		this.naziv = naziv;
-		this.sjediste = sjediste;
+		this.sjediste = new PomocniZupan(false, sjediste);
 		this.stanovnistvo = stanovnistvo;
 		this.brojgradova = brojgradova;
 		this.brojopcina = brojopcina;
 		this.brojnaselja = brojnaselja;
 		this.povrsina = povrsina;
-		this.zupan = zupan;
+		this.zupan = new PomocniZupan(true, zupan);
 		this.wikipoveznica = wikipoveznica;
 		this.gdppercapita = gdppercapita;
 		this.links = links;
+		this._context = "https://schema.org/";
+		this.slika = "http://localhost:8080/api/v1/zupanije/id/"+id+"/picture";
 	}
 	
-
+	public ZupanijaDTO() {
+		
+	}
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -59,7 +114,7 @@ public class ZupanijaDTO {
 		this.naziv = naziv;
 	}
 
-	public String getSjediste() {
+	public Object getSjediste() {
 		return sjediste;
 	}
 
@@ -107,7 +162,7 @@ public class ZupanijaDTO {
 		this.povrsina = povrsina;
 	}
 
-	public String getZupan() {
+	public Object getZupan() {
 		return zupan;
 	}
 
