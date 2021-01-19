@@ -145,6 +145,45 @@
             "description": "Not Implemented"
           }
         }
+      }
+    },
+    "/id/{id}/picture": {
+      "get": {
+        "tags": [
+          "id"
+        ],
+        "summary": "Dobij sliku županije",
+        "description": "Vraća sliku županije",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID županije",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "501": {
+            "description": "Not Implemented"
+          }
+        }
       },
       "put": {
         "tags": [
