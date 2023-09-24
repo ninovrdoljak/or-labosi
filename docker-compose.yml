@@ -1,0 +1,40 @@
+version: '3.1'
+services:
+  frontend:
+    image: 'ninovrdoljak/or-labosi:htmlv1'
+    ports:
+      - "80:80"
+  API:
+    image: 'ninovrdoljak/or-labosi:restapiv1'
+    ports:
+      - "8087:8080"
+    depends_on:
+      PostgreSQL:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://PostgreSQL:5432/ORlabos3
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=dockerlozinka
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  PostgreSQL:
+    image: 'ninovrdoljak/or-labosi:bazav1'
+    container_name: mojaBazaSpremnik
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=dockerlozinka
+      - POSTGRES_USER=postgres
+    expose:
+      - "5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      
+      
+      
+      
+      
+ 
