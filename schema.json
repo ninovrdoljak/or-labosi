@@ -72,7 +72,7 @@
 				"type": "number",
 				"title": "ID grada",
 				"description": "ID jednog HR grada."
-			}
+			},
 			"nazivgrada": {
 				"type": "string",
 				"title": "Grad županije",
